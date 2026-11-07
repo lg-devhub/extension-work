@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-forest: #183D2B;
+  --color-primary: #3F6849;
+  --color-sage: #91A88B;
+
+  --color-background: #F4F3EA;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F0F2EB;
+
+  --color-text-primary: #202820;
+  --color-text-secondary: #737C73;
+  --color-text-muted: #9AA198;
+
+  --color-border: #E2E5DC;
+
+  --color-success: #39865A;
+  --color-success-subtle: #EAF4EE;
+  --color-warning: #E5A23C;
+  --color-warning-subtle: #FDF5E8;
+  --color-danger: #D85B55;
+  --color-danger-subtle: #FDECEB;
+  --color-info: #5686B7;
+  --color-info-subtle: #ECF2F8;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply antialiased scroll-smooth;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-sans text-body selection:bg-sage/30 selection:text-forest overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight text-text-primary;
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInLeftPanel {
+  0% {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.2deg);
+  }
+}
+
+@keyframes shakeError {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-6px);
+  }
+  40%, 80% {
+    transform: translateX(6px);
+  }
+}
+
+@layer utilities {
+  .animate-fade-slide-up {
+    animation: fadeSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-fade-slide-up-delayed {
+    opacity: 0;
+    animation: fadeSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.14s forwards;
+  }
+  .animate-slide-in-left {
+    animation: slideInLeftPanel 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-float-slow {
+    animation: floatSlow 7s ease-in-out infinite;
+  }
+  .animate-shake {
+    animation: shakeError 0.4s ease-in-out;
+  }
+
+  .scrollbar-subtle::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-subtle::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-subtle::-webkit-scrollbar-thumb {
+    background-color: #D2D7CC;
+    border-radius: 9999px;
+  }
+  .scrollbar-subtle::-webkit-scrollbar-thumb:hover {
+    background-color: #91A88B;
+  }
+}
